@@ -68,5 +68,38 @@ namespace CSharp.lab4
             txtInfo.Text += "\n";
             txtInfo.Text += String.Format("{0}\t{1}\t\t{2}", juiceCount, sodaCount, alcoholCount);
         }
+
+        private void btnGet_Click(object sender, EventArgs e)
+        {
+            // если список пуст, то напишем что пусто и выйдем из функции
+            if (this.drinksList.Count == 0)
+            {
+                txtOut.Text = "Пусто Q_Q";
+                return;
+            }
+
+            // взяли первый напиток
+            var drink = this.drinksList[0];
+            // тут вам не реальность, взятие это на самом деле создание указателя на область в памяти
+            // где хранится экземпляр класса, так что если хочешь удалить, делай это сам
+            this.drinksList.RemoveAt(0);
+
+            // ну а теперь предложим покупателю его напиток
+            if (drink is Juice)
+            {
+                txtOut.Text = "Сок";
+            }
+            else if (drink is Soda)
+            {
+                txtOut.Text = "Газировка";
+            }
+            else if (drink is Alcohol)
+            {
+                txtOut.Text = "Алкоголь";
+            }
+
+            // обновим информацию о количестве товара на форме
+            ShowInfo();
+        }
     }
 }
