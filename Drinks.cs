@@ -10,10 +10,11 @@ namespace CSharp.lab4
 
     public class Drink
     {
-        public double Volume; // объем напитка
+        public double Volume = 0.0; // объем напитка
         public virtual String GetInfo()
         {
-            return "Я напиток";
+            var str = String.Format("\nОбъём: {0} мл", this.Volume);
+            return str;
         }
     }
 
@@ -29,7 +30,7 @@ namespace CSharp.lab4
         public override String GetInfo()
         {
             var str = "Я сок";
-            str += String.Format("\nОбъём: {0} мл", this.Volume);
+            str += base.GetInfo();
             return str;
         }
     }
@@ -45,7 +46,7 @@ namespace CSharp.lab4
         public override String GetInfo()
         {
             var str = "Я газировка";
-            str += String.Format("\nОбъём: {0} мл", this.Volume);
+            str += base.GetInfo();
             return str;
         }
     }
@@ -61,7 +62,7 @@ namespace CSharp.lab4
         public override String GetInfo()
         {
             var str = "Я алкоголь";
-            str += String.Format("\nОбъём: {0} мл", this.Volume);
+            str += base.GetInfo();
             return str;
         }
     }
