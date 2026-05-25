@@ -7,10 +7,19 @@ using System.Threading.Tasks;
 
 namespace CSharp.lab4
 {
+
+    public class Drink
+    {
+
+    }
+
+
+
+
     // сок
     public enum FruitType { Apple, Orange, Grape, Mandarin, Watermelon }
 
-    public class Juice
+    public class Juice : Drink
     {
         public double Volume = 0.0;        // объем напитка
         public FruitType UsedFruit = FruitType.Apple;  // используемый фрукт
@@ -20,7 +29,7 @@ namespace CSharp.lab4
     // газировка
     public enum SodaType { Cola, Lemonade, Tonic, Sprite, Fanta }
 
-    public class Soda
+    public class Soda : Drink
     {
         public double Volume = 0.0;        // объем напитка
         public SodaType Type = SodaType.Cola;     // вид газировки
@@ -30,7 +39,7 @@ namespace CSharp.lab4
     // алкоголь
     public enum AlcoholType { Beer, Wine, Vodka, Cognac, Whiskey, Rum }
 
-    public class Alcohol
+    public class Alcohol : Drink
     {
         public double Volume = 0.0;        // объем напитка
         public double Strength = 40.0;     // крепость (в процентах)
