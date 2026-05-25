@@ -10,6 +10,8 @@ namespace CSharp.lab4
 
     public class Drink
     {
+        public static Random rnd = new Random();
+
         public double Volume = 0.0; // объем напитка
         public virtual String GetInfo()
         {
@@ -20,23 +22,35 @@ namespace CSharp.lab4
 
 
     // сок
-    public enum FruitType { Apple, Orange, Grape, Mandarin, Watermelon }
+    public enum FruitType { Яблоко, Апельсин, Виноград, Мандарин, Арбуз }
 
     public class Juice : Drink
     {
-        public FruitType UsedFruit = FruitType.Apple;  // используемый фрукт
+        public FruitType UsedFruit = FruitType.Яблоко;  // используемый фрукт
         public bool HasPulp = true;         // наличие мякоти
 
         public override String GetInfo()
         {
             var str = "Я сок";
             str += base.GetInfo();
+            str += String.Format("\nФрукт: {0}", this.UsedFruit);
+            str += String.Format("\nНаличие мякоти: {0}", this.HasPulp);
+            
             return str;
+        }
+
+        public static Juice Generate()
+        {
+            return new Juice
+            {
+                Volume = 75 + rnd.Next() % 1000, // объём от 75 до 1000 мл
+                HasPulp = rnd.Next() % 2 == 0 // наличие мякоти true или false
+            };
         }
     }
 
     // газировка
-    public enum SodaType { Cola, Lemonade, Tonic, Sprite, Fanta }
+    public enum SodaType { Cola, Лимонад, Sprite, Fanta }
 
     public class Soda : Drink
     {
@@ -47,23 +61,45 @@ namespace CSharp.lab4
         {
             var str = "Я газировка";
             str += base.GetInfo();
+            str += String.Format("\nТип: {0}", this.Type);
+            str += String.Format("\nКоличество пузыриков: {0}", this.BubblesCount);
             return str;
+        }
+
+        public static Soda Generate()
+        {
+            return new Soda
+            {
+                Volume = 75 + rnd.Next() % 200, // объём от 75 до 200 мл
+                BubblesCount = 100 + rnd.Next() % 1000, // количество пузыриков
+            };
         }
     }
 
     // алкоголь
-    public enum AlcoholType { Beer, Wine, Vodka, Cognac, Whiskey, Rum }
+    public enum AlcoholType { Пиво, Вино, Водка, Виски, Ром }
 
     public class Alcohol : Drink
     {
         public double Strength = 40.0;     // крепость (в процентах)
-        public AlcoholType Type = AlcoholType.Vodka;   // тип алкоголя
+        public AlcoholType Type = AlcoholType.Водка;   // тип алкоголя
 
         public override String GetInfo()
         {
             var str = "Я алкоголь";
             str += base.GetInfo();
+            str += String.Format("\nТип: {0}", this.Type);
+            str += String.Format("\nкрепость: {0} %", this.Strength);
             return str;
+        }
+
+        public static Alcohol Generate()
+        {
+            return new Alcohol
+            {
+                Volume = 75 + rnd.Next() % 200, // объём от 75 до 200 мл
+                Strength = 10 + rnd.Next() % 100, // крепость
+            };
         }
     }
 }

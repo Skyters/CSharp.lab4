@@ -19,22 +19,13 @@ namespace CSharp.lab4
                 switch (rnd.Next() % 3) // генерирую случайное число от 0 до 2 (ну остаток от деления на 3)
                 {
                     case 0: // если 0, то сок
-                        this.drinksList.Add(new Juice
-                        {
-                            Volume = rnd.Next() % 101
-                        });
+                        this.drinksList.Add(Juice.Generate());
                         break;
                     case 1: // если 1 то газировка
-                        this.drinksList.Add(new Soda
-                        {
-                            Volume = rnd.Next() % 101
-                        });
+                        this.drinksList.Add(Soda.Generate());
                         break;
                     case 2: // если 2 то алкоголь
-                        this.drinksList.Add(new Alcohol
-                        {
-                            Volume = rnd.Next() % 101
-                        });
+                        this.drinksList.Add(Alcohol.Generate());
                         break;
                         // появление других чисел маловероятно
                 }
