@@ -84,19 +84,7 @@ namespace CSharp.lab4
             // где хранится экземпляр класса, так что если хочешь удалить, делай это сам
             this.drinksList.RemoveAt(0);
 
-            // ну а теперь предложим покупателю его напиток
-            if (drink is Juice)
-            {
-                txtOut.Text = "Сок";
-            }
-            else if (drink is Soda)
-            {
-                txtOut.Text = "Газировка";
-            }
-            else if (drink is Alcohol)
-            {
-                txtOut.Text = "Алкоголь";
-            }
+            txtOut.Text = drink.GetInfo();
 
             // обновим информацию о количестве товара на форме
             ShowInfo();

@@ -10,7 +10,10 @@ namespace CSharp.lab4
 
     public class Drink
     {
-
+        public virtual String GetInfo()
+        {
+            return "Я напиток";
+        }
     }
 
 
@@ -24,6 +27,11 @@ namespace CSharp.lab4
         public double Volume = 0.0;        // объем напитка
         public FruitType UsedFruit = FruitType.Apple;  // используемый фрукт
         public bool HasPulp = true;         // наличие мякоти
+
+        public override String GetInfo()
+        {
+            return "Я сок";
+        }
     }
 
     // газировка
@@ -34,6 +42,11 @@ namespace CSharp.lab4
         public double Volume = 0.0;        // объем напитка
         public SodaType Type = SodaType.Cola;     // вид газировки
         public int BubblesCount = 1000;     // количество пузыриков
+
+        public override String GetInfo()
+        {
+            return "Я газировка";
+        }
     }
 
     // алкоголь
@@ -44,5 +57,10 @@ namespace CSharp.lab4
         public double Volume = 0.0;        // объем напитка
         public double Strength = 40.0;     // крепость (в процентах)
         public AlcoholType Type = AlcoholType.Vodka;   // тип алкоголя
+
+        public override String GetInfo()
+        {
+            return "Я алкоголь";
+        }
     }
 }
