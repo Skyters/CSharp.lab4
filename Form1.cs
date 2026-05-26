@@ -69,6 +69,29 @@ namespace CSharp.lab4
             txtInfo.Text += String.Format("{0}\t{1}\t\t{2}", juiceCount, sodaCount, alcoholCount);
         }
 
+        private void ShowQueue()
+        {
+            lstQueue.Items.Clear();
+
+            if (drinksList.Count == 0)
+            {
+                lstQueue.Items.Add("[ пусто ]");
+                return;
+            }
+
+            for (int i = 0; i < drinksList.Count; i++)
+            {
+                var drink = drinksList[i];
+                string prefix;
+                if (i == 0)
+                    prefix = "→"; // стрелка у первого (следующего на выдачу)
+                else
+                    prefix = "  ";
+                string info = drink.GetInfo().Replace("\n", " | ");
+                lstQueue.Items.Add(String.Format("{0} {1,2}. {2}", prefix, i + 1, info));
+            }
+        }
+
         private void btnGet_Click(object sender, EventArgs e)
         {
             // если список пуст, то напишем что пусто и выйдем из функции
@@ -88,6 +111,7 @@ namespace CSharp.lab4
 
             // обновим информацию о количестве товара на форме
             ShowInfo();
+            ShowQueue();
         }
     }
 }
